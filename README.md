@@ -1,11 +1,6 @@
-Based on your `dashboard.py` file for the **Cybersecurity Threat Detection** project, here's a professional and attractive `README.md` you can use for your GitHub repository:
 
----
-
-```markdown
 # 🚨 Cybersecurity Threat Detection Dashboard
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)  
 > A futuristic, real-time **Cybersecurity Threat Monitoring System** built using **Streamlit**, with integrated **AI voice alerts**, an animated **3D threat map**, and live attack simulations.
 
 ---
@@ -24,17 +19,8 @@ Based on your `dashboard.py` file for the **Cybersecurity Threat Detection** pro
 
 ## 🎥 Live Preview
 
-https://user-streamlit-demo-link-here.com *(Add your deployed link if available)*
+https://user-streamlit-demo-link-here.com(http://192.168.1.2:8501) 
 
----
-
-## 📸 Screenshots
-
-<img src="https://user-image-placeholder.com/threat-map.png" alt="3D Threat Map" width="600"/>
-<br>
-<img src="https://user-image-placeholder.com/threat-logs.png" alt="Threat Logs" width="600"/>
-
----
 
 ## 🛠️ Tech Stack
 
@@ -78,10 +64,7 @@ streamlit run dashboard.py
 ```text
 Username: admin
 Password: securepassword
-```
-*(You can change this in `dashboard.py` > `ADMIN_CREDENTIALS` section)*
 
----
 
 ## 📊 Threat Severity Legend
 
