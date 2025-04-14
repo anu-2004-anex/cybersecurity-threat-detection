@@ -100,16 +100,3 @@ Password: securepassword
 📧 bpillaianamika@gmail.com  
 🔗 [GitHub Profile](https://github.com/anu-2004-anex)
 
----
-
-> ⚡ Feel free to contribute, fork, or star this repo if you like it!
-```
-
----
-
-Let me know if you want:
-- A custom logo or GIF banner for your README
-- A deployable version on **Streamlit Cloud**
-- Auto-generated badges for language, last commit, etc.
-
-Want me to paste this directly into your `README.md` file too?
