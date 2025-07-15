@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cybersecurity Threat Detection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      color: #00ffe0;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 10px #00ffe0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0ff;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #00ffe0;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px auto;
+    }
+    .hero button, .logout-btn {
+      padding: 15px 40px;
+      font-size: 1rem;
+      background-color: #00ffe0;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #0ff;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 20px;
+    }
+    .hero button:hover, .logout-btn:hover {
+      background-color: #0ff;
+      box-shadow: 0 0 40px #0ff;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 60px 40px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .feature {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 0 15px #0ff;
+    }
+    .feature h3 {
+      color: #0ff;
+      margin-bottom: 10px;
+    }
+    .feature p {
+      color: #ccc;
+      font-size: 14px;
+    }
+    footer {
+      background-color: #0f0c29;
+      padding: 20px;
+      text-align: center;
+      color: #ccc;
+    }
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #00ffe0;
+    }
+    .section-content {
+      max-width: 900px;
+      margin: auto;
+      font-size: 1rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🔐 CyberShield</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="cyber_arena_challenges.html">Gamification</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="settings.html">Settings</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h1>Stay One Step Ahead</h1>
+    <p>Protect your digital world with our smart cybersecurity system. Detect and handle threats in real time with powerful tools and insights.</p>
+    <button id="getStartedBtn" onclick="window.location.href='dashboard.html'">Get Started</button>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <h3>Live Threat Alerts</h3>
+      <p>Instantly spot new threats and stay informed with real-time monitoring.</p>
+    </div>
+    <div class="feature">
+      <h3>Interactive Map</h3>
+      <p>See a 3D world map showing where cyberattacks are happening right now.</p>
+    </div>
+    <div class="feature">
+      <h3>Smart Notifications</h3>
+      <p>Get voice alerts and popups when serious threats are found.</p>
+    </div>
+  </section>
+
+  <section id="dashboard">
+    <h2 class="section-title">Dashboard</h2>
+    <div class="section-content">
+      Our dashboard shows live updates on cyberattacks around the world. Check logs, see threat levels, and take quick action using simple controls.
+    </div>
+  </section>
+
+  <section id="reports">
+    <h2 class="section-title">Reports</h2>
+    <div class="section-content">
+      Download reports showing recent threats. Filter data by date or region and understand the most common attack types.
+    </div>
+  </section>
+
+  <section id="settings">
+    <h2 class="section-title">Settings</h2>
+    <div class="section-content">
+      Customize how you use the system. Choose dark mode, manage alerts, and connect your own security tools like firewalls.
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Need Help?</h2>
+    <div class="section-content">
+      Contact our support team for any questions, problems, or to work together. We're always ready to help you stay safe.
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 CyberShield | bpillaianamika@gmail.com
+  </footer>
+
+  <script>
+    // Redirect to login page if not logged in
+    window.addEventListener('load', function () {
+      if (localStorage.getItem("isLoggedIn") !== "true") {
+        window.location.href = 'login.html';
+      }
+    });
+
+    // Logout function
+    function logout() {
+      localStorage.setItem("isLoggedIn", "false");
+      window.location.href = 'login.html';
+    }
+  </script>
+
+</body>
+</html>

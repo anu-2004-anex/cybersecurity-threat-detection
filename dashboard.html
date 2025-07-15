@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cyber Threat Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      color: #00ffe0;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px #0ff;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 50px;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 0 20px #00ffe0;
+      transition: 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #00ffe0, 0 0 50px #00ffe0;
+    }
+
+    .card h2 {
+      color: #0ff;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    .btn {
+      margin-top: 40px;
+      padding: 15px 35px;
+      background: #00ffe0;
+      color: #000;
+      font-weight: bold;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #0ff;
+      transition: 0.3s ease-in-out;
+    }
+
+    .btn:hover {
+      background: #0ff;
+      box-shadow: 0 0 40px #0ff;
+    }
+
+    .threat-animation {
+      margin-top: 50px;
+      animation: pulseGlow 2s infinite alternate;
+      font-size: 1.2rem;
+      color: #ff4c4c;
+      text-shadow: 0 0 15px red, 0 0 30px crimson;
+    }
+
+    @keyframes pulseGlow {
+      0% { text-shadow: 0 0 10px red; }
+      100% { text-shadow: 0 0 30px red, 0 0 50px crimson; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Threat Monitoring Dashboard</h1>
+  <div class="tagline">Observe | Analyze | React — Your Cyber Fortress in Action</div>
+
+  <div class="dashboard-grid">
+    <div class="card">
+      <h2>🛰️ Global Threat Map</h2>
+      <p>Visualize attacks as they happen across the world. Heatmaps and attack vectors update in real time with AI-driven intelligence.</p>
+    </div>
+    <div class="card">
+      <h2>🚨 Threat Severity Levels</h2>
+      <p>Track critical, medium, and low-level threats using our dynamic color-coded system. Prioritize your defense instantly.</p>
+    </div>
+    <div class="card">
+      <h2>📈 Live Threat Logs</h2>
+      <p>Monitor real-time logs of malicious activity with timestamps, IP traces, and anomaly classifications.</p>
+    </div>
+    <div class="card">
+      <h2>🔊 AI Voice Alerts</h2>
+      <p>Stay informed with intelligent voice alerts when major threats are detected. No more screen staring!</p>
+    </div>
+  </div>
+
+  <div class="threat-animation">
+    ⚠️ Intrusion Detected from Unknown IP: 203.0.113.27 (Simulated)
+  </div>
+
+  <a href="realtime.html">
+    <button class="btn">Launch Real-Time Dashboard</button>
+  </a>
+</body>
+</html>

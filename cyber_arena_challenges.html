@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cyber Arena Challenges</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0d1117;
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #00ffe0;
+      border: none;
+      border-radius: 8px;
+    }
+    #challengeContent button {
+      display: block;
+      margin: 10px auto;
+      background-color: #282c34;
+      color: white;
+      border: 1px solid #00ffe0;
+    }
+    .section {
+      margin-top: 30px;
+    }
+    #timer {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #ffcc00;
+    }
+    #scoreboard {
+      margin-top: 30px;
+      padding: 10px;
+      background-color: #1c1f26;
+      border: 1px solid #00ffe0;
+      border-radius: 10px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cyber Arena: Security Challenges</h1>
+  <div class="section" style="background-color:#1c1f26; padding: 20px; border-radius: 10px;">
+    <h2>🎯 Challenge Brief</h2>
+    <ul style="text-align:left; max-width:600px; margin:0 auto;">
+      <li><strong>🛡️ DDoS Defense:</strong> Act fast to block malicious IPs flooding your server. Each correct block increases your score.</li>
+      <li><strong>🎣 Phishing Filter:</strong> Review incoming emails and flag phishing attempts based on subject lines. Be alert!</li>
+      <li><strong>🧨 Ransomware Rescue:</strong> Your files are encrypted—choose the right action to recover your system without risk.</li>
+    </ul>
+  </div>
+  
+
+  <div class="section">
+    <button onclick="startChallenge('DDoS')">🛡️ DDoS Defense</button>
+    <button onclick="startChallenge('Phishing')">🎣 Phishing Filter</button>
+    <button onclick="startChallenge('Ransomware')">🧨 Ransomware Rescue</button>
+  </div>
+
+  <div class="section" id="challengeArea" style="display:none;">
+    <h2 id="challengeTitle"></h2>
+    <div id="timer">Time Left: <span id="timeLeft">30</span>s</div>
+    <div id="challengeContent"></div>
+  </div>
+
+  <div class="section" id="scoreboard">
+    <h2>📊 Scoreboard</h2>
+    <ul id="scoreList"></ul>
+  </div>
+
+  <script>
+    const challengeTitle = document.getElementById("challengeTitle");
+    const challengeContent = document.getElementById("challengeContent");
+    const challengeArea = document.getElementById("challengeArea");
+    const timeLeftEl = document.getElementById("timeLeft");
+    const scoreList = document.getElementById("scoreList");
+
+    let timer, countdown;
+    let currentScore = 0;
+
+    function startChallenge(type) {
+      clearInterval(timer);
+      challengeArea.style.display = "block";
+      challengeContent.innerHTML = "";
+      timeLeftEl.textContent = "30";
+      currentScore = 0;
+      let timeLeft = 30;
+
+      timer = setInterval(() => {
+        timeLeft--;
+        timeLeftEl.textContent = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          endChallenge(type, currentScore);
+        }
+      }, 1000);
+
+      if (type === "DDoS") {
+        challengeTitle.innerText = "🛡️ DDoS Defense";
+        const scoreEl = document.createElement("p");
+        scoreEl.textContent = "Score: 0";
+        challengeContent.appendChild(scoreEl);
+
+        const spawnIP = () => {
+          if (timeLeft <= 0) return;
+          const ip = document.createElement("button");
+          ip.textContent = "Block IP: " + Array(4).fill(0).map(() => Math.floor(Math.random() * 256)).join(".");
+          ip.onclick = () => {
+            currentScore++;
+            scoreEl.textContent = "Score: " + currentScore;
+            ip.remove();
+          };
+          challengeContent.appendChild(ip);
+        };
+
+        for (let i = 0; i < 15; i++) {
+          setTimeout(spawnIP, i * 1000);
+        }
+
+      } else if (type === "Phishing") {
+        challengeTitle.innerText = "🎣 Phishing Filter";
+        const emails = [
+          { subject: "⚠️ Your account has been compromised", phishing: true },
+          { subject: "Weekly Newsletter - Company Updates", phishing: false },
+          { subject: "URGENT: Reset your password", phishing: true },
+          { subject: "Meeting Agenda for Friday", phishing: false },
+          { subject: "Prize Won! Click Here!", phishing: true },
+        ];
+
+        emails.forEach((email, index) => {
+          const btn = document.createElement("button");
+          btn.textContent = email.subject;
+          btn.onclick = () => {
+            if (email.phishing) {
+              alert("✅ Correct! That was phishing.");
+              currentScore++;
+            } else {
+              alert("❌ Wrong! That email was safe.");
+            }
+            btn.disabled = true;
+          };
+          challengeContent.appendChild(btn);
+        });
+
+      } else if (type === "Ransomware") {
+        challengeTitle.innerText = "🧨 Ransomware Rescue";
+        const q = document.createElement("p");
+        q.textContent = "Your files are encrypted. What action do you take?";
+        challengeContent.appendChild(q);
+
+        const opt1 = document.createElement("button");
+        opt1.textContent = "Restore from Backup";
+        opt1.onclick = () => {
+          alert("✅ System restored. Smart choice!");
+          currentScore = 1;
+          clearInterval(timer);
+          endChallenge(type, currentScore);
+        };
+        challengeContent.appendChild(opt1);
+
+        const opt2 = document.createElement("button");
+        opt2.textContent = "Pay the Ransom";
+        opt2.onclick = () => {
+          alert("❌ Risky decision. No guarantee!");
+          currentScore = 0;
+          clearInterval(timer);
+          endChallenge(type, currentScore);
+        };
+        challengeContent.appendChild(opt2);
+      }
+    }
+
+    function endChallenge(type, score) {
+      alert(`Challenge Over!\n${type} Score: ${score}`);
+      saveScore(type, score);
+      renderScoreboard();
+    }
+
+    function saveScore(mode, score) {
+      const previous = JSON.parse(localStorage.getItem("cyberScores") || "[]");
+      previous.push({ mode, score, time: new Date().toLocaleString() });
+      localStorage.setItem("cyberScores", JSON.stringify(previous));
+    }
+
+    function renderScoreboard() {
+      const scores = JSON.parse(localStorage.getItem("cyberScores") || "[]");
+      scoreList.innerHTML = "";
+      scores.slice(-5).reverse().forEach(s => {
+        const li = document.createElement("li");
+        li.textContent = `${s.mode} – ${s.score} pts – ${s.time}`;
+        scoreList.appendChild(li);
+      });
+    }
+
+    renderScoreboard(); // on load
+  </script>
+</body>
+</html>
