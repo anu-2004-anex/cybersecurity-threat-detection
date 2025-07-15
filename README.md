@@ -19,8 +19,6 @@
 
 ## 🎥 Live Preview
 
-https://user-streamlit-demo-link-here.com(http://192.168.1.2:8501) 
-
 
 ## 🛠️ Tech Stack
 
